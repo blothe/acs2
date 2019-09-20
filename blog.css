@@ -1,0 +1,290 @@
+body {
+  font-size: 1.6rem;
+}
+
+.noHover {
+  pointer-events: none;
+}
+
+.position_icon {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.contenant {
+  background-image: url("./img/promo_background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: #130E0A !important;
+  transition: background-color 200ms linear;
+}
+
+.position_nav {
+  position: relative;
+}
+
+.navbar {
+  color:white;
+  font-size: 25px;
+}
+
+nav .navbar-nav li a {
+  color: white !important;
+  font-size: 25px;
+}
+
+.about {
+  background-image: url(./img/about_background.jpg);
+  background-size: cover;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.btn_table {
+  background: rgba(255,255,255,0);
+  border: 2px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btn_menu {
+  background: rgba(21,17,18,0.6);
+  border: 2px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 1s;
+}
+
+.btn_menu:hover {
+  background-color: rgba(193,197,198,0.2)
+}
+
+i:hover {
+  color: rgba(255,215,0,0.9);
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+  color:white;
+  font-size: 4em;
+}
+
+.about h2 {
+  color: #cc9900;
+}
+
+.about p {
+  font-family: 'Lato', sans-serif;
+  color: #4c4c4c;
+}
+
+h2 {
+  font-family: 'Yeseva One', cursive;
+  font-size: 2em;
+}
+
+h3 {
+  font-family: 'Yeseva One', cursive;
+}
+
+.row-centered {
+  text-align:center;
+}
+
+.col-centered {
+  display:inline-block;
+  float:none;
+  text-align:left;
+  margin-right:-4px;
+}
+
+.fine_ingredients {
+  background-color: rgba(0,0,0,0.8);
+  color: #dde0df;
+  font-family: 'Gentium Book Basic', serif;
+  font-size: 1.2em;
+}
+
+.ingredient ul li {
+  display: inline;
+}
+
+.parallax2 {
+  background-image: url("img/ingredient_background.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reviews p {
+  font-size: 1.2em;
+  font-family: 'Lato', sans-serif;
+}
+
+.signature {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 1em;
+}
+
+.parallax3 {
+  background-image: url("img/rewiews_background.jpg");
+  height: 450px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blockquote h2 {
+  color: white;
+}
+
+.quote {
+  background-color: rgba(0,0,0,0.8);
+  color: #dde0df;
+  font-family: 'Gentium Book Basic', serif;
+}
+
+.menu {
+  background-size: cover;
+}
+
+#menu-menu-principal>li>a {
+  color: white !important;
+}
+#menu-menu-principal>li>a:hover {
+  color: white !important;
+  text-decoration: none;
+}
+#menu-menu-principal>li {
+  display: inline;
+  margin-left: 8px;
+}
+#menu-menu-principal {
+  list-style: none;
+  display: inline-block;
+}
+
+.menu h2 {
+  font-family: 'Yeseva One', serif;
+  color: #cc9900;
+  margin-top: 1em;
+}
+
+.menu .row {
+  margin: 0;
+}
+
+.menu .col {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.dish {
+  padding: 1em;
+}
+
+.dish-title {
+  border-bottom: solid 1px #cc9900;
+  font-family: 'Yeseva One', serif;
+  color: #cc9900;
+  font-size: 1.2em;
+}
+
+.dish-title p {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.price {
+  text-align: right;
+  padding-bottom: 0;
+  padding-right: 5px;
+}
+
+.m_ingredients {
+  padding-top: 0.5em;
+}
+
+.special-dish {
+  border: 1px solid #cc9900;
+  margin-top: 0;
+}
+
+.special-label p {
+  background-color: #cc9900;
+  color: white;
+  vertical-align: bottom;
+  margin-bottom: 0;
+}
+
+.reservations {
+  background-image: url("img/reservations_background.jpg");
+  background-size: cover;
+}
+
+.reservations .content {
+  font-family: 'Lato', sans-serif;
+}
+
+.reservations h2 {
+  color: #cc9900;
+}
+
+.reservations input, .reservations select {
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+.goldbutton {
+  background-color: #cc9900;
+  color: white;
+}
+
+.contact {
+  font-family: 'Open Sans', sans-serif;
+}
+
+label {
+  color: #c9a131;
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+  color: #fefefe;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+footer .content {
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer p {
+  line-height: 12px;
+}
+
+footer ul li {
+  display: inline;
+}
