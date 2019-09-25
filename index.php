@@ -190,20 +190,35 @@
   </div>
 </section>
 <section class="reviews parallax3" id="reviews">
-  <div class="container p-5">
-    <div class="row pt-5 ">
-      <div class="quote col-md-6 p-5 mx-auto text-center col-centered">
-        <h2>Guest Reviews</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider">
-        <p class="qtext mt-3">
-          If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes,  muffins, and gourmet coffees make us hard to resist! Stop in today and check us out!
-        </p>
-        <p class="signature">
-          - food inc, New York
-        </p>
+  <!-- CPT -->
+  <?php
+  $args = array( 'post_type' => 'guest reviews', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <!-- /CPT -->
+      <div class="container p-5">
+        <div class="row pt-5 ">
+          <div class="quote col-md-6 p-5 mx-auto text-center col-centered">
+            <h2><?php the_title(); ?></h2>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider">
+            <p class="qtext mt-3">
+              <?php the_content(); ?>
+            </p>
+            <p class="signature">
+              - <?php the_author(); ?>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <!-- CPT -->
+    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  <?php else:  ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+  <?php endif; ?>
+  <!-- /CPT -->
 </section>
 <section class="reservations" id="reservations">
   <div class="container p-5">

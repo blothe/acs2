@@ -13,7 +13,7 @@ register_nav_menus( array(
 
 // Our custom post type function
 function create_posttype() {
-  register_post_type( 'reviews',
+  register_post_type( 'guest reviews',
   // CPT Options
   array(
     'labels' => array(
