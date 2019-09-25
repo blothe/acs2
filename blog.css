@@ -139,12 +139,14 @@ h3 {
 .reviews p {
   font-size: 1.2em;
   font-family: 'Lato', sans-serif;
+  text-align: justify;
 }
 
 .signature {
   font-family: 'Open Sans', sans-serif;
   color: white;
   font-size: 1em;
+  text-align: right !important;
 }
 
 .parallax3 {

@@ -190,14 +190,12 @@
   </div>
 </section>
 <section class="reviews parallax3" id="reviews">
-  <!-- CPT -->
   <?php
-  $args = array( 'post_type' => 'guest reviews', 'posts_per_page' => 1 );
+  $args = array( 'post_type' => 'avis client', 'posts_per_page' => 1 );
   $the_query = new WP_Query( $args );
   ?>
   <?php if ( $the_query->have_posts() ) : ?>
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-      <!-- /CPT -->
       <div class="container p-5">
         <div class="row pt-5 ">
           <div class="quote col-md-6 p-5 mx-auto text-center col-centered">
