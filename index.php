@@ -301,20 +301,36 @@
     <footer class="bg-dark">
       <div class="container">
         <div class="row ">
-          <section class="col-lg-4 col-md-6 text-center">
-            <h3>About Us</h3>
+          <section class="col-lg-4 col-md-6 text-center" id="à propos">
+            <?php
+            $args = array( 'post_type' => 'à propos', 'posts_per_page' => 1 );
+            $the_query = new WP_Query( $args );
+            ?>
+            <?php if ( $the_query->have_posts() ) : ?>
+              <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <h3><?php the_title(); ?></h3>
             <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
             <div class="content pt-2">
-              Lambda's new and expanded Chelsea location represents a truly <strong>authentic</strong> Greek patisserie, featuring breakfasts of fresh croissants and steaming bowls of café.
+              <?php the_content(); ?>
             </div>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+        <?php else:  ?>
+          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <?php endif; ?>
           </section>
-          <section class="col-lg-4 col-md-6 text-center">
-            <h3>Opening Hours</h3>
+          <section class="col-lg-4 col-md-6 text-center" id="horaires ouverture">
+            <?php
+            $args = array( 'post_type' => 'horaires ouverture', 'posts_per_page' => 1 );
+            $the_query = new WP_Query( $args );
+            ?>
+            <?php if ( $the_query->have_posts() ) : ?>
+              <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <h3><?php the_title(); ?></h3>
             <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
             <div class="content">
               <br>
-              <p><strong>Mon-Thu</strong>: 7:00am-8:00pm</p>
-              <p><strong>Fri-Sun</strong>: 7:00am-10:00pm</p>
+              <?php the_content(); ?>
             </div>
             <ul class="list-unstyled">
               <li><i class="fab fa-cc-visa m-2"></i></li>
@@ -322,14 +338,24 @@
               <li><i class="fab fa-cc-paypal m-2"></i></li>
               <li><i class="fab fa-cc-discover m-2"></i></li>
             </ul>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+        <?php else:  ?>
+          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <?php endif; ?>
           </section>
-          <section class="col-lg-4 col-md-6 text-center">
-            <h3>Location</h3>
+          <section class="col-lg-4 col-md-6 text-center" id="adresse">
+            <?php
+            $args = array( 'post_type' => 'adresse', 'posts_per_page' => 1 );
+            $the_query = new WP_Query( $args );
+            ?>
+            <?php if ( $the_query->have_posts() ) : ?>
+              <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <h3><?php the_title(); ?></h3>
             <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
             <div class="content">
               <br>
-              <p>19th Paradise Street Sitia</p>
-              <p>128 Meserole Avenue</p>
+              <?php the_content(); ?>
             </div>
             <ul class="list-unstyled">
               <li><i class="fab fa-facebook-square mr-2"></i></li>
@@ -337,6 +363,11 @@
               <li><i class="fab fa-twitter m-2"></i></li>
               <li><i class="fab fa-instagram m-2"></i></li>
             </ul>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+        <?php else:  ?>
+          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+        <?php endif; ?>
           </section>
         </div>
       </div>

@@ -51,7 +51,7 @@ function custom_post_type() {
     'show_in_menu'        => true,
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
-    'menu_position'       => 2,
+    'menu_position'       => 4,
     'can_export'          => true,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -90,7 +90,7 @@ function custom_post_type() {
     'show_in_menu'        => true,
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
-    'menu_position'       => 3,
+    'menu_position'       => 5,
     'can_export'          => true,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -129,7 +129,7 @@ function custom_post_type() {
     'show_in_menu'        => true,
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
-    'menu_position'       => 5,
+    'menu_position'       => 7,
     'can_export'          => true,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -153,7 +153,7 @@ function custom_post_type() {
     'update_item'         => __( 'Actualiser le formulaire de réservation', 'twentythirteen' ),
     'search_items'        => __( 'Rechercher dans les formulaires de réservation', 'twentythirteen' ),
     'not_found'           => __( 'Aucun formulaire de réservation trouvé', 'twentythirteen' ),
-    'not_found_in_trash'  => __( 'Aucune formulaire de réservation trouvé dans la corbeille', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucun formulaire de réservation trouvé dans la corbeille', 'twentythirteen' ),
   );
   // options complémentaires
   $args = array(
@@ -168,7 +168,7 @@ function custom_post_type() {
     'show_in_menu'        => true,
     'show_in_nav_menus'   => true,
     'show_in_admin_bar'   => true,
-    'menu_position'       => 6,
+    'menu_position'       => 8,
     'can_export'          => true,
     'has_archive'         => true,
     'exclude_from_search' => false,
@@ -177,6 +177,123 @@ function custom_post_type() {
   );
   // enregistrement paramètres
   register_post_type( 'form. réservation', $args );
+
+  // interface utilisateur
+  $labels = array(
+    'name'                => _x( 'Rubriques "à propos"', 'Post Type General Name', 'twentythirteen' ),
+    'singular_name'       => _x( 'Rubrique "à propos"', 'Post Type Singular Name', 'twentythirteen' ),
+    'menu_name'           => __( 'Rubriques "à propos"', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent rubrique "à propos"', 'twentythirteen' ),
+    'all_items'           => __( 'Toutes les rubriques "à propos"', 'twentythirteen' ),
+    'view_item'           => __( 'Voir la rubrique "à propos"', 'twentythirteen' ),
+    'add_new_item'        => __( 'Ajouter une nouvelle rubrique "à propos"', 'twentythirteen' ),
+    'add_new'             => __( 'Ajouter', 'twentythirteen' ),
+    'edit_item'           => __( 'Modifier la rubrique "à propos"', 'twentythirteen' ),
+    'update_item'         => __( 'Actualiser la rubrique "à propos"', 'twentythirteen' ),
+    'search_items'        => __( 'Rechercher dans les rubriques "à propos"', 'twentythirteen' ),
+    'not_found'           => __( 'Aucune rubrique "à propos" trouvée', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucune rubrique "à propos" trouvée dans la corbeille', 'twentythirteen' ),
+  );
+  // options complémentaires
+  $args = array(
+    'label'               => __( 'rubriques "à propos"', 'twentythirteen' ),
+    'description'         => __( 'Notre activité', 'twentythirteen' ),
+    'labels'              => $labels,
+    'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+    'taxonomies'          => array( 'rubriques "à propos"' ),
+    'hierarchical'        => false,
+    'public'              => true,
+    'show_ui'             => true,
+    'show_in_menu'        => true,
+    'show_in_nav_menus'   => true,
+    'show_in_admin_bar'   => true,
+    'menu_position'       => 9,
+    'can_export'          => true,
+    'has_archive'         => true,
+    'exclude_from_search' => false,
+    'publicly_queryable'  => true,
+    'capability_type'     => 'page',
+  );
+  // enregistrement paramètres
+  register_post_type( 'à propos', $args );
+
+  // interface utilisateur
+  $labels = array(
+    'name'                => _x( 'Rubriques "horaires d\'ouverture"', 'Post Type General Name', 'twentythirteen' ),
+    'singular_name'       => _x( 'Rubrique "horaires d\'ouverture"', 'Post Type Singular Name', 'twentythirteen' ),
+    'menu_name'           => __( 'Rubriques "horaires d\'ouverture"', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent rubrique "horaires d\'ouverture"', 'twentythirteen' ),
+    'all_items'           => __( 'Toutes les rubriques "horaires d\'ouverture"', 'twentythirteen' ),
+    'view_item'           => __( 'Voir la rubrique "horaires d\'ouverture"', 'twentythirteen' ),
+    'add_new_item'        => __( 'Ajouter une nouvelle rubrique "horaires d\'ouverture"', 'twentythirteen' ),
+    'add_new'             => __( 'Ajouter', 'twentythirteen' ),
+    'edit_item'           => __( 'Modifier la rubrique "horaires d\'ouverture"', 'twentythirteen' ),
+    'update_item'         => __( 'Actualiser la rubrique "horaires d\'ouverture"', 'twentythirteen' ),
+    'search_items'        => __( 'Rechercher dans les rubriques "horaires d\'ouverture"', 'twentythirteen' ),
+    'not_found'           => __( 'Aucune rubrique "horaires d\'ouverture" trouvée', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucune rubrique "horaires d\'ouverture" trouvée dans la corbeille', 'twentythirteen' ),
+  );
+  // options complémentaires
+  $args = array(
+    'label'               => __( 'rubriques "horaires d\'ouverture"', 'twentythirteen' ),
+    'description'         => __( 'Nos horaires d\'ouverture', 'twentythirteen' ),
+    'labels'              => $labels,
+    'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+    'taxonomies'          => array( 'rubriques "horaires d\'ouverture"' ),
+    'hierarchical'        => false,
+    'public'              => true,
+    'show_ui'             => true,
+    'show_in_menu'        => true,
+    'show_in_nav_menus'   => true,
+    'show_in_admin_bar'   => true,
+    'menu_position'       => 10,
+    'can_export'          => true,
+    'has_archive'         => true,
+    'exclude_from_search' => false,
+    'publicly_queryable'  => true,
+    'capability_type'     => 'page',
+  );
+  // enregistrement paramètres
+  register_post_type( 'horaires ouverture', $args );
+
+  // interface utilisateur
+  $labels = array(
+    'name'                => _x( 'Rubriques "adresse"', 'Post Type General Name', 'twentythirteen' ),
+    'singular_name'       => _x( 'Rubrique "adresse"', 'Post Type Singular Name', 'twentythirteen' ),
+    'menu_name'           => __( 'Rubriques "adresse"', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent rubrique "adresse"', 'twentythirteen' ),
+    'all_items'           => __( 'Toutes les rubriques "adresse"', 'twentythirteen' ),
+    'view_item'           => __( 'Voir la rubrique "adresse"', 'twentythirteen' ),
+    'add_new_item'        => __( 'Ajouter une nouvelle rubrique "adresse"', 'twentythirteen' ),
+    'add_new'             => __( 'Ajouter', 'twentythirteen' ),
+    'edit_item'           => __( 'Modifier la rubrique "adresse"', 'twentythirteen' ),
+    'update_item'         => __( 'Actualiser la rubrique "adresse"', 'twentythirteen' ),
+    'search_items'        => __( 'Rechercher dans les rubriques "adresse"', 'twentythirteen' ),
+    'not_found'           => __( 'Aucune rubrique "adresse" trouvée', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucune rubrique "adresse" trouvée dans la corbeille', 'twentythirteen' ),
+  );
+  // options complémentaires
+  $args = array(
+    'label'               => __( 'rubriques "adresse"', 'twentythirteen' ),
+    'description'         => __( 'Notre adresse', 'twentythirteen' ),
+    'labels'              => $labels,
+    'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+    'taxonomies'          => array( 'rubriques "adresse"' ),
+    'hierarchical'        => false,
+    'public'              => true,
+    'show_ui'             => true,
+    'show_in_menu'        => true,
+    'show_in_nav_menus'   => true,
+    'show_in_admin_bar'   => true,
+    'menu_position'       => 11,
+    'can_export'          => true,
+    'has_archive'         => true,
+    'exclude_from_search' => false,
+    'publicly_queryable'  => true,
+    'capability_type'     => 'page',
+  );
+  // enregistrement paramètres
+  register_post_type( 'adresse', $args );
 
 }
 
