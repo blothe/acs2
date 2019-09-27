@@ -24,36 +24,57 @@
   </section>
 </div>
 <section class="about text-normal" id="about">
-  <div class="container p-5" >
-    <div class="row">
-      <div class=" cuisto text-center col-sm-6 pt-5">
-        <h2 class="py-4">Just the right food</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" alt="separation" />
-        <p class="p-5">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes,  muffins, and gourmet coffees make us hard to resist! Stop in today and check us out! </p>
-        <img src="<?php bloginfo('template_directory'); ?>/img/about_cook.png" alt="photo about" class="offset-md-2"/>
+  <?php
+  $args = array( 'post_type' => 'prés. cuisine', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="container p-5" >
+        <div class="row">
+          <div class=" cuisto text-center col-sm-6 pt-5">
+            <div class="custom"><h2 class="py-4"><?php the_title(); ?></h2></div>
+            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" alt="separation" /></div>
+            <div class="custom"><?php the_content(); ?></div>
+            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/about_cook.png" alt="photo about" class="offset-md-2"/></div>
+          </div>
+          <div class="col-sm-6">
+            <img src="<?php bloginfo('template_directory'); ?>/img/about_dish.png" alt="plate" />
+          </div>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <img src="<?php bloginfo('template_directory'); ?>/img/about_dish.png" alt="plate" />
-      </div>
-    </div>
-  </div>
+    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  <?php else:  ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+  <?php endif; ?>
 </section>
 <section class="ingredient parallax2" id="ingredients">
-  <div class="container p-5">
-    <div class="row pt-5">
-      <div class="fine_ingredients col-md-6 p-5 ml-auto text-center">
-        <h2 class="pb-2">Fine ingredients</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider">
-        <p class="p-3">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes,  muffins, and gourmet coffees make us hard to resist! Stop in today and check us out!
-        </p>
-        <ul class="list-unstyled">
-          <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img1.png" class="img-fluid" alt="ingredient 1"></li>
-          <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img2.png" class="img-fluid" alt="ingredient 2"></li>
-          <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img3.png" class="img-fluid" alt="ingredient 3"></li>
-        </ul>
+  <?php
+  $args = array( 'post_type' => 'prés. ingrédients', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="container p-5">
+        <div class="row pt-5">
+          <div class="fine_ingredients col-md-6 p-5 ml-auto text-center">
+            <div class="custom"><h2 class="pb-2"><?php the_title(); ?></h2></div>
+            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider"></div>
+            <div class="custom"><?php the_content(); ?></div>
+            <div class="custom"><ul class="list-unstyled">
+              <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img1.png" class="img-fluid" alt="ingredient 1"></li>
+              <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img2.png" class="img-fluid" alt="ingredient 2"></li>
+              <li><img src="<?php bloginfo('template_directory'); ?>/img/ingredient_img3.png" class="img-fluid" alt="ingredient 3"></li>
+            </ul></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  <?php else:  ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+  <?php endif; ?>
 </section>
 <section class="menu" id="menu">
   <div class="container p-5">
@@ -199,119 +220,125 @@
       <div class="container p-5">
         <div class="row pt-5 ">
           <div class="quote col-md-6 p-5 mx-auto text-center col-centered">
-            <h2><?php the_title(); ?></h2>
-            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider">
-            <p class="qtext mt-3">
+            <div class="custom"><h2><?php the_title(); ?></h2></div>
+            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white" alt="divider"></div>
+            <div class="custom"><p class="qtext mt-3">
               <?php the_content(); ?>
-            </p>
-            <p class="signature">
+            </p></div>
+            <div class="custom"><p class="signature">
               - <?php the_author(); ?>
-            </p>
+            </p></div>
           </div>
         </div>
       </div>
-      <!-- CPT -->
     <?php endwhile; ?>
     <?php wp_reset_postdata(); ?>
   <?php else:  ?>
     <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
   <?php endif; ?>
-  <!-- /CPT -->
 </section>
 <section class="reservations" id="reservations">
-  <div class="container p-5">
-    <div class="row py-5">
-      <img src="<?php bloginfo('template_directory'); ?>/img/reservations_image2.jpg" alt="plat 1" class="img-responsive col-12 col-md-3">
-      <img src="<?php bloginfo('template_directory'); ?>/img/reservations_image1.jpg" alt="dessert"  class="img-responsive col-12 col-md-3">
-      <div class="col-12 col-md-6 text-center">
-        <h2>Just the right food</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" class="img-fluid divider_white" alt="divider">
-        <div class="content text-center mt-2">
-          <p>
-            If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back for more. Perfect materials and freshly baked food.
-            <p>
-              Delicious Lambda cakes,  muffins, and gourmet coffees make us hard to resist! Stop in today and check us out! Perfect materials and freshly baked food.
-            </p>
-          </div>
-          <form class="contact" action="index.html" method="post">
-            <div class="form-row text-left">
-              <div class="form-group col-md-6">
-                <label for="name"><strong>Name</strong></label><br>
-                <input type="text" class="form-control" id="name" name="yourname" value="your name *">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="email"><strong>Email</strong></label><br>
-                <input type="email" class="form-control" id="email" name="youremail" placeholder="your email *">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="date"><strong>Date</strong></label><br>
-                <input type="text" class="form-control" id="date" name="choosedate" value="date *">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="number"><strong>Party number</strong></label><br>
-                <select class="form-control" id="number" name="partynb">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-              </div>
+  <?php
+  $args = array( 'post_type' => 'form. réservation', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="container p-5">
+        <div class="row py-5">
+          <img src="<?php bloginfo('template_directory'); ?>/img/reservations_image2.jpg" alt="plat 1" class="img-responsive col-12 col-md-3">
+          <img src="<?php bloginfo('template_directory'); ?>/img/reservations_image1.jpg" alt="dessert"  class="img-responsive col-12 col-md-3">
+          <div class="col-12 col-md-6 text-center">
+            <div class="custom"><h2><?php the_title(); ?></h2></div>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" class="img-fluid divider_white" alt="divider">
+            <div class="content text-center mt-2">
+              <div class="custom"><p><?php the_content(); ?></div>
+              </p>
             </div>
-            <input type="submit" value="Book now!" class="goldbutton btn btn-warning">
-          </form>
-        </div>
-        <div>
-        </div>
-      </section>
-      <footer class="bg-dark">
-        <div class="container">
-          <div class="row ">
-            <section class="col-lg-4 col-md-6 text-center">
-              <h3>About Us</h3>
-              <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
-              <div class="content pt-2">
-                Lambda's new and expanded Chelsea location represents a truly <strong>authentic</strong> Greek patisserie, featuring breakfasts of fresh croissants and steaming bowls of café.
+            <form class="contact" action="index.html" method="post">
+              <div class="form-row text-left">
+                <div class="form-group col-md-6">
+                  <label for="name"><strong>Nom</strong></label><br>
+                  <input type="text" class="form-control" id="name" name="yourname" value="votre nom *">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email"><strong>Email</strong></label><br>
+                  <input type="email" class="form-control" id="email" name="youremail" placeholder="votre email *">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="date"><strong>Date</strong></label><br>
+                  <input type="text" class="form-control" id="date" name="choosedate" value="date *">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="number"><strong>Nombre de convives</strong></label><br>
+                  <select class="form-control" id="number" name="partynb">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
               </div>
-            </section>
-            <section class="col-lg-4 col-md-6 text-center">
-              <h3>Opening Hours</h3>
-              <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
-              <div class="content">
-                <br>
-                <p><strong>Mon-Thu</strong>: 7:00am-8:00pm</p>
-                <p><strong>Fri-Sun</strong>: 7:00am-10:00pm</p>
-              </div>
-              <ul class="list-unstyled">
-                <li><i class="fab fa-cc-visa m-2"></i></li>
-                <li><i class="fab fa-cc-mastercard m-2"></i></li>
-                <li><i class="fab fa-cc-paypal m-2"></i></li>
-                <li><i class="fab fa-cc-discover m-2"></i></li>
-              </ul>
-            </section>
-            <section class="col-lg-4 col-md-6 text-center">
-              <h3>Location</h3>
-              <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
-              <div class="content">
-                <br>
-                <p>19th Paradise Street Sitia</p>
-                <p>128 Meserole Avenue</p>
-              </div>
-              <ul class="list-unstyled">
-                <li><i class="fab fa-facebook-square mr-2"></i></li>
-                <li><i class="fab fa-youtube m-2"></i></li>
-                <li><i class="fab fa-twitter m-2"></i></li>
-                <li><i class="fab fa-instagram m-2"></i></li>
-              </ul>
-            </section>
+              <input type="submit" value="Réservez maintenant !" class="goldbutton btn btn-warning">
+            </form>
           </div>
+          <div>
+          </div>
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+      <?php else:  ?>
+        <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+      <?php endif; ?>
+    </section>
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row ">
+          <section class="col-lg-4 col-md-6 text-center">
+            <h3>About Us</h3>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
+            <div class="content pt-2">
+              Lambda's new and expanded Chelsea location represents a truly <strong>authentic</strong> Greek patisserie, featuring breakfasts of fresh croissants and steaming bowls of café.
+            </div>
+          </section>
+          <section class="col-lg-4 col-md-6 text-center">
+            <h3>Opening Hours</h3>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
+            <div class="content">
+              <br>
+              <p><strong>Mon-Thu</strong>: 7:00am-8:00pm</p>
+              <p><strong>Fri-Sun</strong>: 7:00am-10:00pm</p>
+            </div>
+            <ul class="list-unstyled">
+              <li><i class="fab fa-cc-visa m-2"></i></li>
+              <li><i class="fab fa-cc-mastercard m-2"></i></li>
+              <li><i class="fab fa-cc-paypal m-2"></i></li>
+              <li><i class="fab fa-cc-discover m-2"></i></li>
+            </ul>
+          </section>
+          <section class="col-lg-4 col-md-6 text-center">
+            <h3>Location</h3>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
+            <div class="content">
+              <br>
+              <p>19th Paradise Street Sitia</p>
+              <p>128 Meserole Avenue</p>
+            </div>
+            <ul class="list-unstyled">
+              <li><i class="fab fa-facebook-square mr-2"></i></li>
+              <li><i class="fab fa-youtube m-2"></i></li>
+              <li><i class="fab fa-twitter m-2"></i></li>
+              <li><i class="fab fa-instagram m-2"></i></li>
+            </ul>
+          </section>
         </div>
-      </footer>
-      <?php get_footer(); ?>
+      </div>
+    </footer>
+    <?php get_footer(); ?>

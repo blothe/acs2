@@ -139,7 +139,6 @@ h3 {
 .reviews p {
   font-size: 1.2em;
   font-family: 'Lato', sans-serif;
-  text-align: justify;
 }
 
 .signature {
@@ -289,4 +288,10 @@ footer p {
 
 footer ul li {
   display: inline;
+}
+
+div .custom *
+{
+  margin: 1rem;
+  padding: 0 !important;
 }
