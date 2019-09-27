@@ -12,15 +12,26 @@
     </nav>
   </div>
   <section class="promo text-normal" id="home">
+    <?php
+    $args = array( 'post_type' => 'slogan', 'posts_per_page' => 1 );
+    $the_query = new WP_Query( $args );
+    ?>
+    <?php if ( $the_query->have_posts() ) : ?>
+      <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
     <div class="text-center"  >
-      <h1 class="centrer pt-5">the right ingredients</h1>
-      <h1 class="centrer pb-5 ">for the right food</h1>
+      <h1 class="centrer pt-5"><?php the_title(); ?></h1>
+      <h1 class="centrer pb-5 "><?php the_content(); ?></h1>
       <img src="<?php bloginfo('template_directory'); ?>/img/divider_white.png" alt="divider_white">
     </div>
     <div class="text-center">
-      <a href="#reservations"><button class="btn_table">BOOK A TABLE</button></a>
-      <a href="#menu"><button class="btn_menu">SEE THE MENU</button></a>
+      <a href="#reservations"><button class="btn_table"><?php echo get_post_meta( get_the_ID(), 'button1', true ); ?></button></a>
+      <a href="#menu"><button class="btn_menu"><?php echo get_post_meta( get_the_ID(), 'button2', true ); ?></button></a>
     </div>
+  <?php endwhile; ?>
+  <?php wp_reset_postdata(); ?>
+<?php else:  ?>
+  <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+<?php endif; ?>
   </section>
 </div>
 <section class="about text-normal" id="about">
