@@ -18,20 +18,20 @@
     ?>
     <?php if ( $the_query->have_posts() ) : ?>
       <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-    <div class="text-center"  >
-      <h1 class="centrer pt-5"><?php the_title(); ?></h1>
-      <h1 class="centrer pb-5 "><?php the_content(); ?></h1>
-      <img src="<?php bloginfo('template_directory'); ?>/img/divider_white.png" alt="divider_white">
-    </div>
-    <div class="text-center">
-      <a href="#reservations"><button class="btn_table"><?php echo get_post_meta( get_the_ID(), 'button1', true ); ?></button></a>
-      <a href="#menu"><button class="btn_menu"><?php echo get_post_meta( get_the_ID(), 'button2', true ); ?></button></a>
-    </div>
-  <?php endwhile; ?>
-  <?php wp_reset_postdata(); ?>
-<?php else:  ?>
-  <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-<?php endif; ?>
+        <div class="text-center"  >
+          <h1 class="centrer pt-5"><?php the_title(); ?></h1>
+          <h1 class="centrer pb-5 "><?php the_content(); ?></h1>
+          <img src="<?php bloginfo('template_directory'); ?>/img/divider_white.png" alt="divider_white">
+        </div>
+        <div class="text-center">
+          <a href="#reservations"><button class="btn_table"><?php echo get_post_meta( get_the_ID(), 'button1', true ); ?></button></a>
+          <a href="#menu"><button class="btn_menu"><?php echo get_post_meta( get_the_ID(), 'button2', true ); ?></button></a>
+        </div>
+      <?php endwhile; ?>
+      <?php wp_reset_postdata(); ?>
+    <?php else:  ?>
+      <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+    <?php endif; ?>
   </section>
 </div>
 <section class="about text-normal" id="about">
@@ -88,138 +88,149 @@
   <?php endif; ?>
 </section>
 <section class="menu" id="menu">
-  <div class="container p-5">
-    <div class="row">
-      <div class="appetisers col text-center">
-        <h2>Appetisers</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Tzatsiki</p>
-            <p class="price col-3">$3.99</p>
+  <?php
+  $args = array( 'post_type' => 'menu', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="container p-5">
+        <div class="row">
+          <div class="appetisers col text-center">
+            <h2><?php echo get_post_meta( get_the_ID(), 'Titre 1', true ); ?></h2>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 1 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 1 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 1 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 2 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 2 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 2 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 3 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 3 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 1 >> Choix 3 >> Description', true ); ?>
+              </p>
+            </div>
+            <h2><?php echo get_post_meta( get_the_ID(), 'Titre 2', true ); ?></h2>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 1 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 1 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 1 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="row special-label">
+              <div class="col-9"> </div>
+              <p class="col-3">Special</p>
+            </div>
+            <div class="dish special-dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 2 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 2 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 2 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 3 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 3 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 2 >> Choix 3 >> Description', true ); ?>
+              </p>
+            </div>
           </div>
-          <p class="m_ingredients row">
-            Refreshing traditional cucumber and garlic yoghurt dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Aubergine Salad</p>
-            <p class="price col-3">$5.50</p>
+          <div class="starters col text-center">
+            <h2><?php echo get_post_meta( get_the_ID(), 'Titre 3', true ); ?></h2>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 1 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 1 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 1 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 2 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 2 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 3 >> Choix 2 >> Description', true ); ?>
+              </p>
+            </div>
+            <h2><?php echo get_post_meta( get_the_ID(), 'Titre 4', true ); ?></h2>
+            <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 1 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 1 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 1 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="row special-label">
+              <div class="col-9"> </div>
+              <p class="col-3">Special</p>
+            </div>
+            <div class="dish special-dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 2 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 2 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 2 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 3 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 3 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 3 >> Description', true ); ?>
+              </p>
+            </div>
+            <div class="dish text-left">
+              <div class="dish-title row">
+                <p class="col-9"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 4 >> Nom', true ); ?></p>
+                <p class="price col-3"><?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 4 >> Prix', true ); ?></p>
+              </div>
+              <p class="m_ingredients row">
+                <?php echo get_post_meta( get_the_ID(), 'Titre 4 >> Choix 4 >> Description', true ); ?>
+              </p>
+            </div>
           </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Aubergine Salad</p>
-            <p class="price col-3">$5.25</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <h2>Salads</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Olive Special</p>
-            <p class="price col-3">$5.99</p>
-          </div>
-          <p class="m_ingredients row">
-            Refreshing traditional cucumber and garlic yoghurt dip.
-          </p>
-        </div>
-        <div class="row special-label">
-          <div class="col-9"> </div>
-          <p class="col-3">Special</p>
-        </div>
-        <div class="dish special-dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Greek Salad</p>
-            <p class="price col-3">$5.50</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Gusto Salad</p>
-            <p class="price col-3">$5.25</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
         </div>
       </div>
-      <div class="starters col text-center">
-        <h2>Starters</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Haloumi</p>
-            <p class="price col-3">$3.99</p>
-          </div>
-          <p class="m_ingredients row">
-            Refreshing traditional cucumber and garlic yoghurt dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Spinash Pie</p>
-            <p class="price col-3">$5.50</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <h2>Main Dishes</h2>
-        <img src="<?php bloginfo('template_directory'); ?>/img/divider_black.png" class="img-fluid divider_white" alt="divider">
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Cornish Mackerel</p>
-            <p class="price col-3">$5.99</p>
-          </div>
-          <p class="m_ingredients row">
-            Refreshing traditional cucumber and garlic yoghurt dip.
-          </p>
-        </div>
-        <div class="row special-label">
-          <div class="col-9"> </div>
-          <p class="col-3">Special</p>
-        </div>
-        <div class="dish special-dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Roast Lamb</p>
-            <p class="price col-3">$5.50</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Fried Chicken</p>
-            <p class="price col-3">$5.25</p>
-          </div>
-          <p class="m_ingredients row">
-            Pureed eggplant, garlic, green pepper and tomato dip.
-          </p>
-        </div>
-        <div class="dish text-left">
-          <div class="dish-title row">
-            <p class="col-9">Pastitsio</p>
-            <p class="price col-3">$5.99</p>
-          </div>
-          <p class="m_ingredients row">
-            Refreshing traditional cucumber and garlic yoghurt dip.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <?php endwhile; ?>
+    <?php wp_reset_postdata(); ?>
+  <?php else:  ?>
+    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+  <?php endif; ?>
 </section>
 <section class="reviews parallax3" id="reviews">
   <?php
@@ -319,16 +330,16 @@
             ?>
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <h3><?php the_title(); ?></h3>
-            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
-            <div class="content pt-2">
-              <?php the_content(); ?>
-            </div>
-          <?php endwhile; ?>
-          <?php wp_reset_postdata(); ?>
-        <?php else:  ?>
-          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-        <?php endif; ?>
+                <h3><?php the_title(); ?></h3>
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
+                <div class="content pt-2">
+                  <?php the_content(); ?>
+                </div>
+              <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
+            <?php else:  ?>
+              <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
           </section>
           <section class="col-lg-4 col-md-6 text-center" id="horaires ouverture">
             <?php
@@ -337,23 +348,23 @@
             ?>
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <h3><?php the_title(); ?></h3>
-            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
-            <div class="content">
-              <br>
-              <?php the_content(); ?>
-            </div>
-            <ul class="list-unstyled">
-              <li><i class="fab fa-cc-visa m-2"></i></li>
-              <li><i class="fab fa-cc-mastercard m-2"></i></li>
-              <li><i class="fab fa-cc-paypal m-2"></i></li>
-              <li><i class="fab fa-cc-discover m-2"></i></li>
-            </ul>
-          <?php endwhile; ?>
-          <?php wp_reset_postdata(); ?>
-        <?php else:  ?>
-          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-        <?php endif; ?>
+                <h3><?php the_title(); ?></h3>
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
+                <div class="content">
+                  <br>
+                  <?php the_content(); ?>
+                </div>
+                <ul class="list-unstyled">
+                  <li><i class="fab fa-cc-visa m-2"></i></li>
+                  <li><i class="fab fa-cc-mastercard m-2"></i></li>
+                  <li><i class="fab fa-cc-paypal m-2"></i></li>
+                  <li><i class="fab fa-cc-discover m-2"></i></li>
+                </ul>
+              <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
+            <?php else:  ?>
+              <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
           </section>
           <section class="col-lg-4 col-md-6 text-center" id="adresse">
             <?php
@@ -362,23 +373,23 @@
             ?>
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <h3><?php the_title(); ?></h3>
-            <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
-            <div class="content">
-              <br>
-              <?php the_content(); ?>
-            </div>
-            <ul class="list-unstyled">
-              <li><i class="fab fa-facebook-square mr-2"></i></li>
-              <li><i class="fab fa-youtube m-2"></i></li>
-              <li><i class="fab fa-twitter m-2"></i></li>
-              <li><i class="fab fa-instagram m-2"></i></li>
-            </ul>
-          <?php endwhile; ?>
-          <?php wp_reset_postdata(); ?>
-        <?php else:  ?>
-          <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-        <?php endif; ?>
+                <h3><?php the_title(); ?></h3>
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
+                <div class="content">
+                  <br>
+                  <?php the_content(); ?>
+                </div>
+                <ul class="list-unstyled">
+                  <li><i class="fab fa-facebook-square mr-2"></i></li>
+                  <li><i class="fab fa-youtube m-2"></i></li>
+                  <li><i class="fab fa-twitter m-2"></i></li>
+                  <li><i class="fab fa-instagram m-2"></i></li>
+                </ul>
+              <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
+            <?php else:  ?>
+              <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
           </section>
         </div>
       </div>

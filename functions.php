@@ -141,10 +141,49 @@ function custom_post_type() {
 
   // interface utilisateur
   $labels = array(
+    'name'                => _x( 'Menus', 'Post Type General Name', 'twentythirteen' ),
+    'singular_name'       => _x( 'Menu', 'Post Type Singular Name', 'twentythirteen' ),
+    'menu_name'           => __( 'Menus', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent menu', 'twentythirteen' ),
+    'all_items'           => __( 'Tous les menus', 'twentythirteen' ),
+    'view_item'           => __( 'Voir le menu', 'twentythirteen' ),
+    'add_new_item'        => __( 'Ajouter un nouveau menu', 'twentythirteen' ),
+    'add_new'             => __( 'Ajouter', 'twentythirteen' ),
+    'edit_item'           => __( 'Modifier le menu', 'twentythirteen' ),
+    'update_item'         => __( 'Actualiser le menu', 'twentythirteen' ),
+    'search_items'        => __( 'Rechercher dans les menus', 'twentythirteen' ),
+    'not_found'           => __( 'Aucun menu trouvé', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucun menu trouvé dans la corbeille', 'twentythirteen' ),
+  );
+  // options complémentaires
+  $args = array(
+    'label'               => __( 'menus', 'twentythirteen' ),
+    'description'         => __( 'Notre carte', 'twentythirteen' ),
+    'labels'              => $labels,
+    'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+    'taxonomies'          => array( 'menus' ),
+    'hierarchical'        => false,
+    'public'              => true,
+    'show_ui'             => true,
+    'show_in_menu'        => true,
+    'show_in_nav_menus'   => true,
+    'show_in_admin_bar'   => true,
+    'menu_position'       => 7,
+    'can_export'          => true,
+    'has_archive'         => true,
+    'exclude_from_search' => false,
+    'publicly_queryable'  => true,
+    'capability_type'     => 'page',
+  );
+  // enregistrement paramètres
+  register_post_type( 'menu', $args );
+
+  // interface utilisateur
+  $labels = array(
     'name'                => _x( 'Avis clients', 'Post Type General Name', 'twentythirteen' ),
     'singular_name'       => _x( 'Avis client', 'Post Type Singular Name', 'twentythirteen' ),
     'menu_name'           => __( 'Avis clients', 'twentythirteen' ),
-    'parent_item_colon'   => __( 'Avis client parent', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent avis client', 'twentythirteen' ),
     'all_items'           => __( 'Tous les avis clients', 'twentythirteen' ),
     'view_item'           => __( 'Voir l\'avis client', 'twentythirteen' ),
     'add_new_item'        => __( 'Ajouter un nouvel avis client', 'twentythirteen' ),
