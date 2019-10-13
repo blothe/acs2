@@ -1,31 +1,31 @@
 <?php get_header(); ?>
 <div class="contenant p-5">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#"> <img src="<?php bloginfo('template_directory'); ?>/img/Logo.png" alt="logo restaurant lambda"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
+  <?php
+  $args = array( 'post_type' => 'prés. restaurant', 'posts_per_page' => 1 );
+  $the_query = new WP_Query( $args );
+  ?>
+  <?php if ( $the_query->have_posts() ) : ?>
+    <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="#"><?php the_post_thumbnail(); ?></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-  <section class="promo text-normal" id="home">
-    <?php
-    $args = array( 'post_type' => 'slogan', 'posts_per_page' => 1 );
-    $the_query = new WP_Query( $args );
-    ?>
-    <?php if ( $the_query->have_posts() ) : ?>
-      <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+      <section class="promo text-normal" id="home">
         <div class="text-center"  >
-          <h1 class="centrer pt-5"><?php the_title(); ?></h1>
-          <h1 class="centrer pb-5 "><?php the_content(); ?></h1>
-          <img src="<?php bloginfo('template_directory'); ?>/img/divider_white.png" alt="divider_white">
+          <h1 class="centrer pt-5 main-slogan"><?php the_title(); ?></h1>
+          <h1 class="centrer pb-5 main-slogan"><?php the_content(); ?></h1>
+          <img src="<?php bloginfo('template_directory'); ?>/img/divider_white.png" class="img-fluid divider_white" alt="divider"/>
         </div>
-        <div class="text-center">
-          <a href="#reservations"><button class="btn_table"><?php echo get_post_meta( get_the_ID(), 'button1', true ); ?></button></a>
-          <a href="#menu"><button class="btn_menu"><?php echo get_post_meta( get_the_ID(), 'button2', true ); ?></button></a>
+        <div class="text-center main-clicks">
+          <a href="#reservations"><button class="btn_table main-button"><?php echo get_post_meta( get_the_ID(), 'button1', true ); ?></button></a>
+          <a href="#menu"><button class="btn_menu main-button"><?php echo get_post_meta( get_the_ID(), 'button2', true ); ?></button></a>
         </div>
       <?php endwhile; ?>
       <?php wp_reset_postdata(); ?>
@@ -45,7 +45,7 @@
         <div class="row">
           <div class=" cuisto text-center col-sm-6 pt-5">
             <div class="custom"><h2 class="py-4"><?php the_title(); ?></h2></div>
-            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" alt="separation" /></div>
+            <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/divider_gold.png" class="img-fluid divider_white" alt="divider"/></div>
             <div class="custom"><?php the_content(); ?></div>
             <div class="custom"><img src="<?php bloginfo('template_directory'); ?>/img/about_cook.png" alt="photo about" class="offset-md-2"/></div>
           </div>
@@ -248,7 +248,7 @@
               <?php the_content(); ?>
             </p></div>
             <div class="custom"><p class="signature">
-              - <?php the_author(); ?>
+              &mdash; <?php echo get_post_meta( get_the_ID(), 'Auteur', true ); ?>
             </p></div>
           </div>
         </div>
@@ -323,7 +323,7 @@
     <footer class="bg-dark">
       <div class="container">
         <div class="row ">
-          <section class="col-lg-4 col-md-6 text-center" id="à propos">
+          <section class="col-lg-4 col-md-6 text-center" id="à-propos">
             <?php
             $args = array( 'post_type' => 'à propos', 'posts_per_page' => 1 );
             $the_query = new WP_Query( $args );
@@ -331,8 +331,8 @@
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <h3><?php the_title(); ?></h3>
-                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
-                <div class="content pt-2">
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2" alt="divider">
+                <div class="content">
                   <?php the_content(); ?>
                 </div>
               <?php endwhile; ?>
@@ -341,7 +341,7 @@
               <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
             <?php endif; ?>
           </section>
-          <section class="col-lg-4 col-md-6 text-center" id="horaires ouverture">
+          <section class="col-lg-4 col-md-6 text-center" id="horaires">
             <?php
             $args = array( 'post_type' => 'horaires ouverture', 'posts_per_page' => 1 );
             $the_query = new WP_Query( $args );
@@ -349,9 +349,8 @@
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <h3><?php the_title(); ?></h3>
-                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2 pb-2">
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2" alt="divider">
                 <div class="content">
-                  <br>
                   <?php the_content(); ?>
                 </div>
                 <ul class="list-unstyled">
@@ -374,13 +373,12 @@
             <?php if ( $the_query->have_posts() ) : ?>
               <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <h3><?php the_title(); ?></h3>
-                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2">
+                <img src="<?php bloginfo('template_directory'); ?>/img/divider_white1.png" class="img-fluid divider_white_s p-2" alt="divider">
                 <div class="content">
-                  <br>
                   <?php the_content(); ?>
                 </div>
                 <ul class="list-unstyled">
-                  <li><i class="fab fa-facebook-square mr-2"></i></li>
+                  <li><i class="fab fa-facebook-square m-2"></i></li>
                   <li><i class="fab fa-youtube m-2"></i></li>
                   <li><i class="fab fa-twitter m-2"></i></li>
                   <li><i class="fab fa-instagram m-2"></i></li>

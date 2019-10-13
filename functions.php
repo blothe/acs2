@@ -1,5 +1,9 @@
 <?php
 
+register_nav_menus( array(
+  'menu-principal' => 'Menu principal'
+) );
+
 function wpdocs_theme_name_scripts() {
 
   wp_register_style('main-style', get_template_directory_uri().'/blog.css', array(), true);
@@ -12,39 +16,37 @@ function wpdocs_theme_name_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'wpdocs_theme_name_scripts' );
 
-register_nav_menus( array(
-  'menu-principal' => 'Menu principal'
-) );
+add_theme_support( 'post-thumbnails' );
 
 /*******************
-* CUSTOM POST TYPE ************************************************************
+* CUSTOM POST TYPE *************************************************************
 *******************/
 
 function custom_post_type() {
 
   // interface utilisateur
   $labels = array(
-    'name'                => _x( 'Slogans', 'Post Type General Name', 'twentythirteen' ),
-    'singular_name'       => _x( 'Slogan', 'Post Type Singular Name', 'twentythirteen' ),
-    'menu_name'           => __( 'Slogans', 'twentythirteen' ),
-    'parent_item_colon'   => __( 'Parent slogan', 'twentythirteen' ),
-    'all_items'           => __( 'Tous les slogans', 'twentythirteen' ),
-    'view_item'           => __( 'Voir le slogan', 'twentythirteen' ),
-    'add_new_item'        => __( 'Ajouter un nouveau slogan', 'twentythirteen' ),
+    'name'                => _x( 'Présentations restaurant', 'Post Type General Name', 'twentythirteen' ),
+    'singular_name'       => _x( 'Présentation restaurant', 'Post Type Singular Name', 'twentythirteen' ),
+    'menu_name'           => __( 'Présentations restaurant', 'twentythirteen' ),
+    'parent_item_colon'   => __( 'Parent présentation restaurant', 'twentythirteen' ),
+    'all_items'           => __( 'Toutes les présentations restaurant', 'twentythirteen' ),
+    'view_item'           => __( 'Voir la présentation restaurant', 'twentythirteen' ),
+    'add_new_item'        => __( 'Ajouter une nouvelle présentation restaurant', 'twentythirteen' ),
     'add_new'             => __( 'Ajouter', 'twentythirteen' ),
-    'edit_item'           => __( 'Modifier le slogan', 'twentythirteen' ),
-    'update_item'         => __( 'Actualiser le slogan', 'twentythirteen' ),
-    'search_items'        => __( 'Rechercher dans les slogans', 'twentythirteen' ),
-    'not_found'           => __( 'Aucun slogan trouvé', 'twentythirteen' ),
-    'not_found_in_trash'  => __( 'Aucun slogan trouvé dans la corbeille', 'twentythirteen' ),
+    'edit_item'           => __( 'Modifier la présentation restaurant', 'twentythirteen' ),
+    'update_item'         => __( 'Actualiser la présentation restaurant', 'twentythirteen' ),
+    'search_items'        => __( 'Rechercher dans les présentations restaurant', 'twentythirteen' ),
+    'not_found'           => __( 'Aucune présentation restaurant trouvée', 'twentythirteen' ),
+    'not_found_in_trash'  => __( 'Aucune présentation restaurant trouvée dans la corbeille', 'twentythirteen' ),
   );
   // options complémentaires
   $args = array(
-    'label'               => __( 'slogans', 'twentythirteen' ),
-    'description'         => __( 'Notre slogan', 'twentythirteen' ),
+    'label'               => __( 'présentations restaurant', 'twentythirteen' ),
+    'description'         => __( 'Notre restaurant', 'twentythirteen' ),
     'labels'              => $labels,
     'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-    'taxonomies'          => array( 'slogans' ),
+    'taxonomies'          => array( 'présentations restaurant' ),
     'hierarchical'        => false,
     'public'              => true,
     'show_ui'             => true,
@@ -59,7 +61,7 @@ function custom_post_type() {
     'capability_type'     => 'page',
   );
   // enregistrement paramètres
-  register_post_type( 'slogan', $args );
+  register_post_type( 'prés. restaurant', $args );
 
   // interface utilisateur
   $labels = array(

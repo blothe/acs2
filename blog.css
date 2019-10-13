@@ -2,6 +2,49 @@ body {
   font-size: 1.6rem;
 }
 
+.contenant.p-5, #about, #ingredients, #menu, #reviews, #reservations {
+  font-size: 125%;
+  height: 80rem;
+}
+
+.main-button {
+  font-size: 175%;
+}
+
+.main-slogan {
+  font-size: 500%;
+}
+
+.main-clicks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container.p-5 {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container.p-5 .row {
+  padding: 0 0 0 0 !important;
+  margin: 0 0 0 0 !important;
+}
+
+section h2 {
+  padding: 0.5rem !important;
+  margin: 0.5rem !important;
+}
+
+.img-fluid.divider_white {
+  padding: 0.5rem !important;
+  margin: 0.5rem !important;
+}
+
 .noHover {
   pointer-events: none;
 }
@@ -173,17 +216,21 @@ h3 {
 #menu-menu-principal>li>a {
   color: white !important;
 }
+
 #menu-menu-principal>li>a:hover {
   color: white !important;
   text-decoration: none;
 }
+
 #menu-menu-principal>li {
   display: inline;
   margin-left: 8px;
 }
+
 #menu-menu-principal {
   list-style: none;
   display: inline-block;
+  margin-left: 3rem;
 }
 
 .menu h2 {
@@ -252,6 +299,10 @@ h3 {
   color: #cc9900;
 }
 
+.reservations form {
+  padding-top: 1em;
+}
+
 .reservations input, .reservations select {
   font-size: 1em;
   opacity: 0.7;
@@ -260,6 +311,7 @@ h3 {
 .goldbutton {
   background-color: #cc9900;
   color: white;
+  margin-top: 1em;
 }
 
 .contact {
@@ -279,6 +331,7 @@ footer {
 
 footer .content {
   font-family: 'Open Sans', sans-serif;
+  padding-top: 1rem;
 }
 
 footer p {
@@ -289,8 +342,7 @@ footer ul li {
   display: inline;
 }
 
-div .custom *
-{
+div .custom * {
   margin: 1rem;
   padding: 0 !important;
 }
